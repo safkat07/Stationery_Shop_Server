@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose';
 import { TProduct } from './product.interface';
+import { number } from 'zod';
 
 const productSchema = new Schema<TProduct>({
   name: {
@@ -31,8 +32,12 @@ const productSchema = new Schema<TProduct>({
   description: {
     type: String,
     required: [true, 'Product Description is Required'],
-    minlength: [10, 'Description must be at least 10 characters long'],
+    minlength: [50, 'Description must be at least 50 characters long'],
     maxlength: [200, 'Description cannot exceed 200 characters'],
+  },
+  quantity: {
+    type: Number,
+    required: [true, 'Product Description is Required'],
   },
   inStock: {
     type: Boolean,
