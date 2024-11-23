@@ -33,7 +33,7 @@ const productValidationSchema = z.object({
       required_error: 'Description  is required',
       invalid_type_error: 'Descriptionmust must be a string',
     })
-    .min(50, 'Description must be at least 50 characters long')
+    .min(10, 'Description must be at least 50 characters long')
     .max(200, 'Description cannot be more than 200 characters'),
   quantity: z
     .number({

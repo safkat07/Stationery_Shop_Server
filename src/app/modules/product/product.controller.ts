@@ -32,6 +32,56 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
+const getAllProducts = async (req: Request, res: Response) => {
+  try {
+    const { searchTerm } = req.query;
+    const result = await productServices.getAllProductsFromDB(
+      searchTerm as string,
+    );
+    return res.status(201).json({
+      success: true,
+      message: 'All products Retrived Successfully',
+      data: result,
+    });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return res.status(400).json({
+        success: false,
+        message: 'Unable to Get All Products',
+        error: error.message,
+      });
+    }
+  }
+};
+
+const getASingleProduct = async (req: Request, res: Response) => {
+  try {
+    const { productID } = req.params;
+    const result = await productServices.getAsingleProductFromDB(productID);
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found.',
+      });
+    }
+    return res.status(201).json({
+      success: true,
+      message: 'Product Retrived Successfully',
+      data: result,
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(400).json({
+        success: false,
+        message: 'Unable to Get All Products',
+        error: error.message,
+      });
+    }
+  }
+};
+
 export const productControllers = {
   createProduct,
+  getAllProducts,
+  getASingleProduct,
 };
