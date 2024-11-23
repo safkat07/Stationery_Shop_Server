@@ -25,8 +25,26 @@ const getAsingleProductFromDB = async (productID: unknown) => {
   return result;
 };
 
+const updateAProductInDB = async (
+  productID: unknown,
+  updateData: Partial<TProduct>,
+) => {
+  const result = await Product.findByIdAndUpdate(productID, updateData, {
+    runValidators: true,
+    new: true,
+  });
+  return result;
+};
+
+const deleteAProductFromDB = async (productID: unknown) => {
+  const result = await Product.deleteOne({ _id: productID });
+  return result;
+};
+
 export const productServices = {
   createProductIntoDB,
   getAllProductsFromDB,
   getAsingleProductFromDB,
+  updateAProductInDB,
+  deleteAProductFromDB,
 };

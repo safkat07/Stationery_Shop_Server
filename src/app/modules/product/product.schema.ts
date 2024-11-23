@@ -15,6 +15,7 @@ const productSchema = new Schema<TProduct>(
     price: {
       type: Number,
       required: [true, 'Product Price is Required'],
+      min: [0, 'Price must be a positive number'],
     },
     category: {
       type: String,
