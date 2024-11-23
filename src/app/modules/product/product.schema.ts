@@ -1,6 +1,5 @@
 import { model, Schema } from 'mongoose';
 import { TProduct } from './product.interface';
-import { number } from 'zod';
 
 const productSchema = new Schema<TProduct>(
   {
