@@ -91,3 +91,30 @@ npm run start:dev
 
 - `POST /api/orders` - Create a new order.
 - `GET /api/revenue` - Get Revenue.
+
+## Models
+
+### 1. Stationery Product Model
+
+| Field         | Type    | Description                                                            |
+| ------------- | ------- | ---------------------------------------------------------------------- |
+| `name`        | String  | The name of the product.                                               |
+| `brand`       | String  | The brand of the product.                                              |
+| `price`       | Number  | The price of the product. Must be positive.                            |
+| `category`    | String  | Enum: Writing, Office Supplies, Art Supplies, Educational, Technology. |
+| `description` | String  | A brief description of the product.                                    |
+| `quantity`    | Number  | Quantity available.                                                    |
+| `inStock`     | Boolean | Indicates whether the product is in stock.                             |
+
+### 2. Order Model
+
+| Field        | Type     | Description                                |
+| ------------ | -------- | ------------------------------------------ |
+| `email`      | String   | Customer's email address.                  |
+| `product`    | ObjectId | Reference to the Stationery Product model. |
+| `quantity`   | Number   | Quantity of the product ordered.           |
+| `totalPrice` | Number   | Calculated as product price \* quantity.   |
+
+## Thank You! 🙏
+
+Thank you for exploring this project! If you have any feedback or suggestions, feel free to open an issue or contribute via pull requests.
