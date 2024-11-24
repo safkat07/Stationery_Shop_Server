@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
 import { orderServices } from './order.services';
-import { errorUtil } from 'zod/lib/helpers/errorUtil';
+import orderValidationSchema from './order.validation';
 
 const createOrder = async (req: Request, res: Response) => {
   try {
-    const { email, product, quantity } = req.body;
+    const validateData = orderValidationSchema.parse(req.body);
+    const { email, product, quantity } = validateData;
     const newOrder = await orderServices.createNewOrderIntoDB(
       email,
       product,
@@ -49,7 +50,7 @@ const getTotalRevenue = async (req: Request, res: Response) => {
       message: 'Revenue calculated successfully.',
       data: result,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     if (error instanceof Error) {
       return res.status(500).json({
         success: false,

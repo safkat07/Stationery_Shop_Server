@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import productValidationSchema from './product.validation';
 import { productServices } from './product.services';
-import { date, ZodError } from 'zod';
+import { ZodError } from 'zod';
 
 const createProduct = async (req: Request, res: Response) => {
   try {
