@@ -40,6 +40,7 @@ Develop an Express application using TypeScript, integrating MongoDB with Mongoo
 - **TypeScript** - JavaScript with static typing.
 - **MongoDB** - Database for storing product and order data.
 - **Mongoose** - ODM for MongoDB, used to define models and interact with the database.
+- **Zod** - For validation of data.
 
 ---
 
