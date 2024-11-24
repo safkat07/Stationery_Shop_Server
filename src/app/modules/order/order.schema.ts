@@ -1,6 +1,5 @@
 import { model, Schema } from 'mongoose';
 import { TOrder } from './order.interface';
-import { Product } from '../product/product.schema';
 
 const orderSchema = new Schema<TOrder>(
   {
@@ -26,20 +25,5 @@ const orderSchema = new Schema<TOrder>(
     timestamps: true,
   },
 );
-
-// Pre-save middleware to calculate totalPrice
-// orderSchema.pre('save', async function (next) {
-//   if (!this.isModified('quantity') && !this.isModified('product')) {
-//     return next();
-//   }
-
-//   const product = await Product.findById(this.product);
-//   if (!product) {
-//     throw new Error('Product not found');
-//   }
-
-//   this.totalPrice = product.price * this.quantity;
-//   next();
-// });
 
 export const Order = model<TOrder>('Order', orderSchema);

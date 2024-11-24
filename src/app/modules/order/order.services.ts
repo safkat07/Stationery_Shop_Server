@@ -6,7 +6,6 @@ const createNewOrderIntoDB = async (
   product: string,
   quantity: number,
 ) => {
-  // Use findById to find the product by its _id
   const result = await Product.findById(product);
   if (!result) {
     throw new Error('Product not found.');
