@@ -20,24 +20,24 @@ const getAllProductsFromDB = async (searchTerm?: string) => {
   return result;
 };
 
-const getAsingleProductFromDB = async (productID: unknown) => {
-  const result = await Product.findById(productID);
+const getAsingleProductFromDB = async (productId: unknown) => {
+  const result = await Product.findById(productId);
   return result;
 };
 
 const updateAProductInDB = async (
-  productID: unknown,
+  productId: unknown,
   updateData: Partial<TProduct>,
 ) => {
-  const result = await Product.findByIdAndUpdate(productID, updateData, {
+  const result = await Product.findByIdAndUpdate(productId, updateData, {
     runValidators: true,
     new: true,
   });
   return result;
 };
 
-const deleteAProductFromDB = async (productID: unknown) => {
-  const result = await Product.deleteOne({ _id: productID });
+const deleteAProductFromDB = async (productId: unknown) => {
+  const result = await Product.deleteOne({ _id: productId });
   return result;
 };
 
